@@ -1,10 +1,10 @@
 package com.udun.sdk.controller;
 
 import cn.hutool.json.JSONUtil;
+import com.udun.sdk.client.UdunClient;
 import com.udun.sdk.domain.Address;
 import com.udun.sdk.domain.Coin;
 import com.udun.sdk.domain.ResultMsg;
-import com.udun.sdk.service.UdunService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ApiDemoController {
     Logger log = LoggerFactory.getLogger(ApiDemoController.class);
     @Autowired
-    UdunService udunService;
+    UdunClient udunClient;
     private static final String SUCCESS = "success";
 
     /**
@@ -30,7 +30,7 @@ public class ApiDemoController {
      */
     @GetMapping("/create")
     public String create() {
-        Address address = udunService.createAddress("0", "1", "1", "http://demo.com/notify");
+        Address address = udunClient.createAddress("0", "1", "1", "http://demo.com/notify");
         log.info(JSONUtil.toJsonStr(address));
         return SUCCESS;
     }
@@ -42,7 +42,7 @@ public class ApiDemoController {
      */
     @GetMapping("/withdraw")
     public String withdraw() {
-        ResultMsg resultMsg = udunService.withdraw("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
+        ResultMsg resultMsg = udunClient.withdraw("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
                 "520", "520",
                 "42423121", "", "http://demo.com/notify");
         log.info(resultMsg.toString());
@@ -56,7 +56,7 @@ public class ApiDemoController {
      */
     @GetMapping("proxyPay")
     public String proxyPay() {
-        ResultMsg resultMsg = udunService.proxyPay("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
+        ResultMsg resultMsg = udunClient.proxyPay("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
                 "520", "520",
                 "43242312321321", "", "http://demo.com/notify");
         log.info(resultMsg.toString());
@@ -70,7 +70,7 @@ public class ApiDemoController {
      */
     @GetMapping("/checkAddress")
     public String checkAddress() {
-        boolean b = udunService.checkAddress("520", "32423432");
+        boolean b = udunClient.checkAddress("520", "32423432");
         log.info("{}", b);
         return SUCCESS;
     }
@@ -82,7 +82,7 @@ public class ApiDemoController {
      */
     @GetMapping("/listSupportCoin")
     public String listSupportCoin() {
-        List<Coin> coinList = udunService.listSupportCoin(false);
+        List<Coin> coinList = udunClient.listSupportCoin(false);
         log.info("{}", coinList.size());
         return SUCCESS;
     }
