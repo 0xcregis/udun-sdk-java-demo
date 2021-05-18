@@ -49,6 +49,7 @@ public class CallBackController {
             } else if (trade.getStatus() == 2) {
                 log.info("审核不通过");
                 //TODO
+                
             } else if (trade.getStatus() == 3) {
                 log.info("提币已到账");
                 //TODO
