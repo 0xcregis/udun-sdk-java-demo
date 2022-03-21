@@ -1,10 +1,10 @@
-package com.udun.sdk.controller;
+package com.uduncloud.sdk.controller;
 
 import cn.hutool.json.JSONUtil;
-import com.udun.sdk.client.UdunClient;
-import com.udun.sdk.domain.Address;
-import com.udun.sdk.domain.Coin;
-import com.udun.sdk.domain.ResultMsg;
+import com.uduncloud.sdk.client.UdunClient;
+import com.uduncloud.sdk.domain.Address;
+import com.uduncloud.sdk.domain.Coin;
+import com.uduncloud.sdk.domain.ResultMsg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +56,7 @@ public class ApiDemoController {
      */
     @GetMapping("proxyPay")
     public String proxyPay() {
-        ResultMsg resultMsg = udunClient.proxyPay("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
+        ResultMsg resultMsg = udunClient.autoWithdraw("0xa09921e9a3886e1b2b79e8fcd27d3a61ebe0ecd9", BigDecimal.TEN,
                 "520", "520",
                 "43242312321321", "", "http://demo.com/notify");
         log.info(resultMsg.toString());

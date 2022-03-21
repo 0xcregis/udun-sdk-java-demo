@@ -1,6 +1,6 @@
-package com.udun.sdk.config;
+package com.uduncloud.sdk.config;
 
-import com.udun.sdk.client.UdunClient;
+import com.uduncloud.sdk.client.UdunClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

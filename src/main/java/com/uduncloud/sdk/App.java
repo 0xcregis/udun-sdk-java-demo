@@ -1,4 +1,4 @@
-package com.udun.sdk;
+package com.uduncloud.sdk;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
